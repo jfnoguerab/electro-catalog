@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
 @NoArgsConstructor
 @Table(name = "fabrica", schema = "electro_catalog")
@@ -25,7 +24,8 @@ public class Fabrica extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     private UUID id;
-
+    
+    @Setter
     @NotNull(message = "El nombre de la fábrica no puede ser nulo")
     @NotBlank(message = "El nombre de la fábrica no puede estar vacío")
     @Size(min = 3, max = 50, message = "El nombre de la fábrica debe tener entre 3 y 50 caracteres")
