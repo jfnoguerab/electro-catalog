@@ -1,6 +1,5 @@
 package com.egg.electro_catalog.model.entities;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
