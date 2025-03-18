@@ -6,10 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.egg.electro_catalog.model.dtos.UsuarioCreateDTO;
-import com.egg.electro_catalog.model.entities.Usuario;
-import com.egg.electro_catalog.model.enums.Rol;
-
-import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
 

@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La Casa de Electricidad</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+
+<head th:replace="~{layout/head :: head('La Casa de Electricidad')}"></head>
+
 <body>
-    <header>
-        <nav>
-            <h1>La Casa de Electricidad</h1>
-        </nav>
-    </header>
+
+    <header th:replace="~{layout/navbar :: navbar('')}"></header>
 
     <main>
         <section class="welcome">
@@ -24,8 +18,7 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 La Casa de Electricidad. Todos los derechos reservados.</p>
-    </footer>
+    <footer th:replace="~{layout/footer :: footer}"></footer>
+
 </body>
 </html>

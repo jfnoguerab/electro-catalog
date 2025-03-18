@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
+
+<head th:replace="~{layout/head :: head('La Casa de Electricidad | Registro de Usuario')}"></head>
+
 <body>
-    <header>
-        <nav>
-            <h1>La Casa de Electricidad</h1>
-        </nav>
-    </header>
+
+    <header th:replace="~{layout/navbar :: navbar('')}"></header>
 
     <main>
         <section class="form-container">
             <h2>Registro de Usuario</h2>
-            <a th:href="@{/login}" class="btn">Si ya tienes cuenta, ingresa aquí</a>
 
             <form th:action="@{/logincheck}" method="POST" th:object="${usuario}">
                 <label for="nombre">Nombre:</label>
@@ -40,11 +33,11 @@
 
                 <button type="submit" class="btn">Registrarse</button>
             </form>
+            <a th:href="@{/login}" class="btn">Si ya tienes cuenta, ingresa aquí</a>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 La Casa de Electricidad. Todos los derechos reservados.</p>
-    </footer>
+    <footer th:replace="~{layout/footer :: footer}"></footer>
+
 </body>
 </html>
