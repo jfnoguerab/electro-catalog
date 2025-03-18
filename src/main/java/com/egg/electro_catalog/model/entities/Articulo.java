@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Setter
 @Getter
 @NoArgsConstructor
 @Table(name = "articulo", schema = "electro_catalog")
@@ -29,23 +30,19 @@ public class Articulo {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "nro", nullable = false)
-    private Long nro;
+    @Column(name = "nro", nullable = false, unique = true)
+    private Integer nro;
 
-    @Setter
     @NotNull(message = "El nombre del artículo no puede ser nulo")
     @NotBlank(message = "El nombre del artículo no puede estar vacío")
     @Size(min = 3, max = 50, message = "El nombre del artículo debe tener entre 3 y 50 caracteres")
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
     
-    @Setter
     @Max(value = 250, message = "La descripción artículo debe tener máximo 250 caracteres")
     @Column(name = "descripcion", length = 250, nullable = false)
     private String descripcion;
 
-    @Setter
     @ManyToOne
     @JoinColumn(name = "fabrica_id", nullable = false)
     @NotNull(message = "Debe seleccionar una fábrica")
