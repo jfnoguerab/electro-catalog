@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,8 +18,8 @@
             <h2>Bienvenido a La Casa de Electricidad</h2>
             <p>Tu tienda confiable de productos eléctricos.</p>
             <div class="buttons">
-                <a href="registrousuario.html" class="btn">Registrarse</a>
-                <a href="login.html" class="btn">Iniciar sesión</a>
+                <a th:href="@{/registrar}" class="btn">Registrarse</a>
+                <a th:href="@{/login}" class="btn">Iniciar sesión</a>
             </div>
         </section>
     </main>
