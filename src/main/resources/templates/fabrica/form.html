@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/head :: head('La Casa de Electricidad | Gestión de Fábricas')}"></head>
+
+<body>
+
+    <header th:replace="~{layout/navbar :: navbar('')}"></header>
+
+    <main>
+        <section class="form-container">
+            <h2>Registro de Fábricas</h2>
+    
+            <form th:action="@{/fabrica/registrar}" method="POST" th:object="${fabrica}">
+                <label for="nombre">Nombre:</label>
+                <input type="text" th:field="*{nombre}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+
+                <button type="submit" class="btn">Registrarse</button>
+            </form>
+        </section>
+    </main>
+
+    <footer th:replace="~{layout/footer :: footer}"></footer>
+
+</body>
+</html>

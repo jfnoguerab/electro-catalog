@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/head :: head('La Casa de Electricidad | Gestión de Fábricas')}"></head>
+
+<body>
+
+    <header th:replace="~{layout/navbar :: navbar('')}"></header>
+
+    <main>
+        <section class="form-container">
+            <h2>Gestión de Fábricas</h2>
+    
+            <!-- Mensajes de éxito o error (puedes usarlo más adelante con backend si es necesario) -->
+            <div class="alert alert-success" id="exito" style="display: none;">¡Operación exitosa!</div>
+            <div class="alert alert-danger" id="error" style="display: none;">¡Hubo un error!</div>
+    
+            <a th:href="@{/fabrica/registrar}" class="btn">Nueva Fábrica</a>
+    
+            <!-- Tabla para mostrar las fábricas -->
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Fila de ejemplo, simula que hay fábricas cargadas -->
+                    <tr th:each="fabrica : ${fabricas}">
+                        <th scope="row" th:text="${fabrica.id}"></th>
+                        <td th:text="${fabrica.nombre}"></td>
+                        <td>
+                            <!-- Icono de modificar -->
+                            <a href="#" class="btn btn-edit">
+                                <i class="fas fa-edit"></i> Modificar
+                            </a>
+                            <!-- Formulario para eliminar -->
+                            <form action="#" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-delete" onclick="return confirm('¿Estás seguro?')">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer th:replace="~{layout/footer :: footer}"></footer>
+
+</body>
+</html>
