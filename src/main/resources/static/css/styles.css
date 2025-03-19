@@ -71,6 +71,17 @@ h2 {
 }
 */
 
+.btn-info {
+    color: #fff;
+    background-color: #19acca;
+}
+
+.btn-info:hover, .btn-info:active,
+.btn-info:focus {
+    color: #fff !important;
+    background-color: #12c1e4 !important;
+}
+
 /* Contenedor del formulario */
 .form-container {
     max-width: 400px;

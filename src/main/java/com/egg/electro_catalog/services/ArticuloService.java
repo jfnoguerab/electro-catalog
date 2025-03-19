@@ -21,7 +21,7 @@ public class ArticuloService {
 
     private final FabricaRepository fabricaRepository;
     private final ArticuloRepository articuloRepository;
-    private final AtomicInteger atomicInteger = new AtomicInteger(0); // Inicia en 0
+    private final AtomicInteger atomicInteger = new AtomicInteger(1); // Inicia en 1
 
     @PostConstruct
     public void inicializarContador() {

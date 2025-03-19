@@ -8,13 +8,27 @@
     <header th:replace="~{layout/navbar :: navbar('')}"></header>
 
     <main>
+        <div
+            th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert" >
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:" >
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" ></path>
+            </svg>
+    
+            <strong>¡Error!</strong> <span th:text="${error}"></span>
+    
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+        </div>
         <section class="form-container">
             <h2>Registro de Usuario</h2>
 
-            <form th:action="@{/logincheck}" method="POST" th:object="${usuario}">
+            <form class="text-start" th:action="@{/registrar}" method="POST" th:object="${usuario}">
                 <label for="nombre">Nombre:</label>
                 <input type="text" th:field="*{nombre}" required>
                 <small class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                
+                <label for="apellido">Apellido:</label>
+                <input type="text" th:field="*{apellido}" required>
+                <small class="text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
 
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" th:field="*{email}" required>
@@ -31,9 +45,11 @@
                 <!-- Aquí imprimimos el error global de la anotación personalizada -->
                 <small class="text-danger" th:if="${#fields.hasGlobalErrors()}" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></small>
 
-                <button type="submit" class="btn">Registrarse</button>
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <a th:href="@{/login}" class="btn btn-info">Si ya tienes cuenta, ingresa aquí</a>
+                </div>
             </form>
-            <a th:href="@{/login}" class="btn">Si ya tienes cuenta, ingresa aquí</a>
         </section>
     </main>
 

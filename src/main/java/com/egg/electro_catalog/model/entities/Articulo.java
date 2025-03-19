@@ -35,11 +35,11 @@ public class Articulo {
 
     @NotNull(message = "El nombre del artículo no puede ser nulo")
     @NotBlank(message = "El nombre del artículo no puede estar vacío")
-    @Size(min = 3, max = 50, message = "El nombre del artículo debe tener entre 3 y 50 caracteres")
-    @Column(name = "nombre", length = 50, nullable = false)
+    @Size(min = 1, max = 100, message = "El nombre del artículo debe tener entre 1 y 100 caracteres")
+    @Column(name = "nombre", length = 100, nullable = false)
     private String nombre;
     
-    @Max(value = 250, message = "La descripción artículo debe tener máximo 250 caracteres")
+    @Size(min = 0, max = 250, message = "La descripción artículo debe tener máximo 250 caracteres")
     @Column(name = "descripcion", length = 250, nullable = true)
     private String descripcion;
 
