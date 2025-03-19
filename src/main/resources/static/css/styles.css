@@ -54,6 +54,7 @@ h2 {
     margin-top: 20px;
 }
 
+/*
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -68,7 +69,7 @@ h2 {
 .btn:hover {
     background-color: #004b99;
 }
-
+*/
 
 /* Contenedor del formulario */
 .form-container {
@@ -100,12 +101,14 @@ input {
 }
 
 /* Estilos para el botón */
+/*
 button.btn {
     margin-top: 15px;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
 }
+    */
 /* Aseguramos que el cuerpo ocupe toda la altura de la ventana */
 html, body {
     height: 100%;
@@ -121,7 +124,7 @@ main {
 /* Estilos para la tabla de artículos */
 /* Estilos para la tabla de artículos */
 .lista-articulos-table {
-    width: 100%; /* Ancho total */
+    width: 90%; /* Ancho total */
     table-layout: auto; /* Ajusta el ancho según el contenido */
     border-collapse: collapse; /* Bordes sin espacio */
 }

@@ -9,14 +9,14 @@
 
     <main>
         <section class="form-container">
-            <h2>Registro de Fábricas</h2>
+            <h2>Registro de fábricas</h2>
     
-            <form th:action="@{/fabrica/registrar}" method="POST" th:object="${fabrica}">
+            <form class="text-start" th:action="@{/fabrica/registrar}" method="POST" th:object="${fabrica}">
                 <label for="nombre">Nombre:</label>
                 <input type="text" th:field="*{nombre}" required>
                 <small class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
 
-                <button type="submit" class="btn">Registrarse</button>
+                <button type="submit" class="btn btn-primary mt-5">Guardar</button>
             </form>
         </section>
     </main>

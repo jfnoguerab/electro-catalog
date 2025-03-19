@@ -8,7 +8,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.egg.electro_catalog.annotation.ViewBasePath;
 import com.egg.electro_catalog.exception.ElectroCatalogException;
+import com.egg.electro_catalog.model.entities.Articulo;
 import com.egg.electro_catalog.model.entities.Fabrica;
+import com.egg.electro_catalog.services.ArticuloService;
 import com.egg.electro_catalog.services.FabricaService;
 
 import jakarta.validation.Valid;
@@ -21,26 +23,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/fabrica")
-@ViewBasePath("fabrica/")
-public class FabricaController {
+@RequestMapping("/articulo")
+@ViewBasePath("articulo/")
+public class ArticuloController {
 
+    private final ArticuloService articuloService;
     private final FabricaService fabricaService;
 
     @GetMapping("/lista")
     public String lista(Model model) {
-        model.addAttribute("fabricas", fabricaService.listarTodos());
+        model.addAttribute("articulos", articuloService.listarTodos());
         return "list";
     }
     
     @GetMapping("/registrar")
     public String registrar(Model model) {
-        model.addAttribute("fabrica", new Fabrica());
+        model.addAttribute("articulo", new Articulo());
+        model.addAttribute("fabricas", fabricaService.listarTodos());
         return "form";
     }
-    
+
     @PostMapping("/registrar")
-    public String registrar(@Valid @ModelAttribute Fabrica fabrica,
+    public String registrar(@Valid @ModelAttribute Articulo articulo,
                             BindingResult bindingResult,
                             RedirectAttributes redirectAttributes) {
 
@@ -49,8 +53,8 @@ public class FabricaController {
         }
 
         try {
-            fabricaService.registrar(fabrica);
-            redirectAttributes.addFlashAttribute("exito", "La fábrica se guardó exitosamente.");
+            articuloService.registrar(articulo);
+            redirectAttributes.addFlashAttribute("exito", "El artículo se guardó exitosamente.");
             return "redirect:/";
         } catch (ElectroCatalogException ex) {
             redirectAttributes.addFlashAttribute("error", ex.getMessage());

@@ -40,7 +40,7 @@ public class Articulo {
     private String nombre;
     
     @Max(value = 250, message = "La descripción artículo debe tener máximo 250 caracteres")
-    @Column(name = "descripcion", length = 250, nullable = false)
+    @Column(name = "descripcion", length = 250, nullable = true)
     private String descripcion;
 
     @ManyToOne

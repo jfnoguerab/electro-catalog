@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{layout/head :: head('La Casa de Electricidad | Gestión de Fábricas')}"></head>
+<head th:replace="~{layout/head :: head('La Casa de Electricidad | Gestión de Artículos')}"></head>
 
 <body>
 
@@ -9,38 +9,42 @@
 
     <main>
         <section class="flex justify-content-center text-center">
-            <h2>Gestión de Fábricas</h2>
+            <h2>Gestión de Artículos</h2>
     
             <!-- Mensajes de éxito o error (puedes usarlo más adelante con backend si es necesario) -->
             <div class="alert alert-success" id="exito" style="display: none;">¡Operación exitosa!</div>
             <div class="alert alert-danger" id="error" style="display: none;">¡Hubo un error!</div>
- 
+    
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mx-5 my-2">
-                <a th:href="@{/fabrica/registrar}" class="btn btn-primary btn-sm mx-3">Nueva Fábrica</a>
+                <a th:href="@{/articulo/registrar}" class="btn btn-primary btn-sm mx-3">Nuevo Artículo</a>
             </div>
     
-            <!-- Tabla para mostrar las fábricas -->
+            <!-- Tabla para mostrar las articulos -->
             <div class="table-responsive row justify-content-center">
                 <table class="table table-bordered table-hover align-middle lista-articulos-table">
                     <thead class="table-light">
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Nro</th>
                             <th scope="col">Nombre</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Fábrica</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Fila de ejemplo, simula que hay fábricas cargadas -->
-                        <tr th:each="fabrica : ${fabricas}">
-                            <th scope="row" th:text="${fabrica.id}"></th>
-                            <td th:text="${fabrica.nombre}"></td>
+                        <tr th:each="articulo : ${articulos}">
+                            <th scope="row" th:text="${articulo.nro}"></th>
+                            <td th:text="${articulo.nombre}"></td>
+                            <td th:text="${articulo.descripción}"></td>
+                            <td th:text="${articulo.fabrica.nombre}"></td>
                             <td>
                                 <!-- Icono de modificar -->
-                                <a th:href= "@{/fabrica/modificar/__${fabrica.id}__}" class="btn btn-edit">
+                                <a th:href= "@{/articulo/modificar/__${articulo.id}__}" class="btn btn-edit">
                                     <i class="fas fa-edit"></i> Modificar
                                 </a>
                                 <!-- Formulario para eliminar -->
-                                <form th:action= "@{/fabrica/eliminar/__${fabrica.id}__}" method="POST" style="display: inline;">
+                                <form th:action= "@{/articulo/eliminar/__${articulo.id}__}" method="POST" style="display: inline;">
                                     <button type="submit" class="btn btn-delete" onclick="return confirm('¿Estás seguro?')">
                                         <i class="fas fa-trash-alt"></i> Eliminar
                                     </button>
