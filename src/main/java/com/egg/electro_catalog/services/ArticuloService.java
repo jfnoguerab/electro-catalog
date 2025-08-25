@@ -2,6 +2,7 @@ package com.egg.electro_catalog.services;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,8 @@ import com.egg.electro_catalog.exception.ElectroCatalogException;
 import com.egg.electro_catalog.model.entities.Articulo;
 import com.egg.electro_catalog.repositories.ArticuloRepository;
 import com.egg.electro_catalog.repositories.FabricaRepository;
+
+import jakarta.annotation.PostConstruct;
 import lombok.AllArgsConstructor;
 
 @Service
@@ -18,6 +21,15 @@ public class ArticuloService {
 
     private final FabricaRepository fabricaRepository;
     private final ArticuloRepository articuloRepository;
+    private final AtomicInteger atomicInteger = new AtomicInteger(1); // Inicia en 1
+
+    @PostConstruct
+    public void inicializarContador() {
+        Articulo articulo = articuloRepository.findTopByOrderByNroDesc();
+        if (articulo != null) {
+            atomicInteger.set(articulo.getNro() + 1);
+        }
+    }
 
     @Transactional
     public Articulo registrar(Articulo nuevoArticulo){
@@ -27,6 +39,8 @@ public class ArticuloService {
         ) {
             throw new ElectroCatalogException("La fábrica del artículo no está registrada."); 
         }
+
+        nuevoArticulo.setNro(atomicInteger.getAndIncrement()); // Asigna y aumenta
 
         return articuloRepository.save(nuevoArticulo);
     }

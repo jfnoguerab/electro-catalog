@@ -9,5 +9,6 @@ import com.egg.electro_catalog.model.entities.Articulo;
 
 @Repository
 public interface ArticuloRepository extends JpaRepository<Articulo, UUID> {
-
+    // Trae el último dato registrado, ordenado de manera descendente por el campo nro
+    Articulo findTopByOrderByNroDesc(); 
 }

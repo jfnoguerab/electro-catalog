@@ -28,7 +28,7 @@ public class Fabrica extends BaseEntity {
     @Setter
     @NotNull(message = "El nombre de la fábrica no puede ser nulo")
     @NotBlank(message = "El nombre de la fábrica no puede estar vacío")
-    @Size(min = 3, max = 50, message = "El nombre de la fábrica debe tener entre 3 y 50 caracteres")
+    @Size(min = 1, max = 50, message = "El nombre de la fábrica debe tener entre 1 y 50 caracteres")
     @Column(name = "nombre", length = 50, nullable = false)
     private String nombre;
 }
