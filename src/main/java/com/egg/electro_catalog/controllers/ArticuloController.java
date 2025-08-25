@@ -1,6 +1,5 @@
 package com.egg.electro_catalog.controllers;
 
-import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.egg.electro_catalog.annotation.ViewBasePath;
 import com.egg.electro_catalog.exception.ElectroCatalogException;
 import com.egg.electro_catalog.model.entities.Articulo;
-import com.egg.electro_catalog.model.entities.Fabrica;
 import com.egg.electro_catalog.services.ArticuloService;
 import com.egg.electro_catalog.services.FabricaService;
 
